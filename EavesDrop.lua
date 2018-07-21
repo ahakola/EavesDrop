@@ -439,7 +439,7 @@ function EavesDrop:CombatEvent(larg1, ...)
 
   local amount, overDamage, school, resisted, blocked, absorbed, critical, glancing, crushing
   local spellId, spellName, spellSchool, missType, powerType, extraAmount, environmentalType, overHeal
-  local text, texture, message, inout, color
+  local text, texture, message, inout, color, auraType, overEnergize
 
   --defaults
   if toPet or fromPet then texture = "pet" end
@@ -728,7 +728,7 @@ function EavesDrop:UpdateEvents()
     frame =  arrEventFrames[key].frame
     text =  arrEventFrames[key].text
     intexture =  arrEventFrames[key].intexture
-    outtexture =  arrEventFrames[key].outtexture
+    local outtexture =  arrEventFrames[key].outtexture
     if (not value.text) then
       text:SetText(nil)
       intexture:SetTexture(nil)
@@ -812,7 +812,7 @@ function EavesDrop:ResetEvents()
     frame =  arrEventFrames[i].frame
     text =  arrEventFrames[i].text
     intexture =  arrEventFrames[i].intextureframe
-    outtexture =  arrEventFrames[i].outtextureframe
+    local outtexture =  arrEventFrames[i].outtextureframe
     frame.delay = 0
     frame.alpha = 0
     frame.tooltipText = nil
@@ -832,7 +832,7 @@ function EavesDrop:OnUpdate()
   local frame
   local count = 0
   curTime = GetTime()
-  elapsed = curTime - lastTime
+  local elapsed = curTime - lastTime
   lastTime = curTime
   for i=1,arrSize do
     frame =  arrEventFrames[i].frame
