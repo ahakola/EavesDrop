@@ -633,7 +633,8 @@ function EavesDrop:PLAYER_XP_UPDATE()
   pxp = xp
 end
 
-function EavesDrop:COMBAT_TEXT_UPDATE(event, larg1, larg2, larg3)
+function EavesDrop:COMBAT_TEXT_UPDATE(event, larg1)
+  local larg2, larg3 = GetCurrentCombatTextEventInfo() -- Thanks DTuloJr for pointing this out!
   if larg1=="FACTION" then
     local sign = "+"
     if (tonumber(larg3) < 0) then sign = "" end
